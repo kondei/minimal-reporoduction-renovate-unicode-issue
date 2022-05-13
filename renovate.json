@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "schedule:weekly",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":ignoreModulesAndTests",
+    ":autodetectPinVersions",
+    ":prHourlyLimit4",
+    ":prConcurrentLimit10",
+    ":maintainLockFilesWeekly",
+    "group:allNonMajor",
+    "group:babelMonorepo",
+    "group:nextjsMonorepo",
+    "group:material-uiMonorepo",
+    "workarounds:all"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "node": {
+    "enabled": false
+  },
+  "rangeStrategy": "bump",
+  "platformCommit": true,
+  "platformAutomerge": true
+}
