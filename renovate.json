@@ -1,0 +1,76 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "schedule:weekly",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":ignoreModulesAndTests",
+    ":autodetectPinVersions",
+    ":prHourlyLimit4",
+    ":prConcurrentLimit10",
+    ":maintainLockFilesWeekly",
+    "group:allNonMajor",
+    "group:babelMonorepo",
+    "group:nextjsMonorepo",
+    "group:material-uiMonorepo",
+    "workarounds:all"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "node": {
+    "enabled": false
+  },
+  "rangeStrategy": "bump",
+  "platformCommit": true,
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "node"
+      ],
+      "enabled": false
+    },
+    {
+      "matchDepTypes": [
+        "peerDependencies"
+      ],
+      "rangeStrategy": "widen"
+    },
+    {
+      "matchPackagePrefixes": [
+        "react",
+        "@types/react"
+      ],
+      "groupName": "react"
+    },
+    {
+      "matchPackagePatterns": [
+        "^@aws-sdk/",
+        "^aws-cdk"
+      ],
+      "matchPackageNames": [
+        "constructs"
+      ],
+      "groupName": "aws"
+    },
+    {
+      "matchPackagePatterns": [
+        "^@storybook/",
+        "^storybook-"
+      ],
+      "groupName": "storybook"
+    },
+    {
+      "extends": "packages:test",
+      "matchPackageNames": [
+        "vitest"
+      ],
+      "groupName": "test packages"
+    }
+  ],
+  "ignoreDeps": [
+    "graphql"
+  ]
+}
